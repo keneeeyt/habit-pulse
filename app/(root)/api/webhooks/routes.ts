@@ -62,7 +62,7 @@ export async function POST(req: Request) {
       emailAddress: email_addresses[0].email_address
     }
 
-    console.log('New user created:', newUser)
+   
     try{
       await connectToDb();
       await User.create(newUser);
