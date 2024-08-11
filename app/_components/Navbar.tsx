@@ -1,10 +1,13 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import AppIcon from "./AppIcon";
+import { useAuth } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Navbar = () => {
-  const defaultColor = "#d90429";
-  const backgroundColorObject = { backgroundColor: defaultColor };
+  const { userId } = useAuth();
+
   return (
     <header>
       <div className="p-8 px-20">
@@ -23,13 +26,27 @@ const Navbar = () => {
               </span>
             </div>
           </div>
-          <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-            <Button>
-              <span className="text-white">Sign In</span>
-            </Button>
-            <Button>
-              <span className="text-white">Sign Up</span>
-            </Button>
+          <div>
+            {userId ? (
+              <Link href={"/dashboard"}>
+                <Button>
+                  <span className="text-white">Dashboard</span>
+                </Button>
+              </Link>
+            ) : (
+              <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+                <Link href={"/sign-in"}>
+                  <Button>
+                    <span className="text-white">Sign In</span>
+                  </Button>
+                </Link>
+                <Link href={"/sign-up"}>
+                  <Button variant={"outline"}>
+                    <span>Sign Up</span>
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
