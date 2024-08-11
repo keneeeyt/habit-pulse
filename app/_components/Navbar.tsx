@@ -29,19 +29,19 @@ const Navbar = () => {
           <div>
             {userId ? (
               <Link href={"/dashboard"}>
-                <Button>
+                <Button className="w-full sm:w-auto">
                   <span className="text-white">Dashboard</span>
                 </Button>
               </Link>
             ) : (
               <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
                 <Link href={"/sign-in"}>
-                  <Button>
+                  <Button className="w-full sm:w-auto">
                     <span className="text-white">Sign In</span>
                   </Button>
                 </Link>
                 <Link href={"/sign-up"}>
-                  <Button variant={"outline"}>
+                  <Button variant={"outline"} className="w-full sm:w-auto">
                     <span>Sign Up</span>
                   </Button>
                 </Link>
