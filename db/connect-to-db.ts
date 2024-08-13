@@ -13,6 +13,7 @@ async function connectToDb() {
     return;
   }
 
+  
   try {
     await mongoose.connect(mongodbUri);
     console.log("Connected to MongoDB");
